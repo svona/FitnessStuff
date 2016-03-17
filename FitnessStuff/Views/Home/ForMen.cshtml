@@ -1,0 +1,199 @@
+﻿@model FitnessStuff.Models.MaleModel
+@{
+    ViewBag.Title = "For Men";
+}
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@using (Html.BeginForm("ForMen", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="row">
+        <div class="col-md-12">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.UOFM, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(m => m.UOFM, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.UOFM, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Height, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Height, new { @class = "form-control", @type = "number" })
+                    <label class="heightUOFM"></label>
+                    @Html.ValidationMessageFor(m => m.Height, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Weight, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Weight, new { @class = "form-control", @type = "number" })
+                    <label class="massUOFM"></label>
+                    @Html.ValidationMessageFor(m => m.Weight, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.AgeInYears, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.AgeInYears, new { @class = "form-control", @type = "number" })
+                    @Html.ValidationMessageFor(m => m.AgeInYears, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.WaistLength, new { @class = "col-md-2 control-label", @title = "Measure the circumference of your waist at a horizontal level around the navel. Don't pull your stomach in." })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.WaistLength, new { @class = "form-control", @type = "number" })
+                    <label class="heightUOFM"></label>
+                    @Html.ValidationMessageFor(m => m.WaistLength, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.NeckLength, new { @class = "col-md-2 control-label", @title = "Measure the circumference of the neck. Start below the larynx with the tape sloping slightly downward to the front. Avoid flaring your neck out." })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.NeckLength, new { @class = "form-control", @type = "number" })
+                    <label class="heightUOFM"></label>
+                    @Html.ValidationMessageFor(m => m.NeckLength, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <input type="submit" value="Calculate" class="btn btn-primary" />
+        </div>
+        <div class="row">
+            <hr />
+            <div style="color:blue">
+                <span style="font-weight:bold">Basal Metabolic Rate (BMR)</span> the number of calories you'd burn if you stayed in bed all day.
+            </div>
+            @Html.Partial("_BMRNotes")
+            <div class="form-group">
+                @Html.LabelFor(m => m.AverageBMR, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.AverageBMR, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    calories per day
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.BMR, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.BMR, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    calories per day
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.OriginalHarrisBenedictBMR, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.OriginalHarrisBenedictBMR, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    calories per day
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.RevisedHarrisBenedictBMR, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.RevisedHarrisBenedictBMR, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    calories per day
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.MifflinStJeorBMR, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.MifflinStJeorBMR, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    calories per day
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div style="color:blue">
+            <span style="font-weight:bold">Body Mass Index (BMI)</span> measurement of body fat based on height and weight.
+        </div>
+        <div style="clear:left;width:50%">
+            @Html.Partial("_BMITable")
+        </div>
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.BMI, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.BMI, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </div>
+            </div>
+        </div>
+        <div>
+            @Html.Partial("_BFITable", typeof(FitnessStuff.Models.MaleModel))
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td style="width:25%;"></td>
+                    <td>@Html.DisplayNameFor(m => m.LeanBodyMass) <label class="massUOFM"></label></td>
+                    <td>@Html.DisplayNameFor(m => m.BodyFatWeight) <label class="massUOFM"></label></td>
+                    <td>@Html.DisplayNameFor(m => m.BFI) %</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Method1</td>
+                    <td>@Html.TextBoxFor(m => m.LeanBodyMass, new { @class = "form-control", @readonly = "readonly" })</td>
+                    <td>@Html.TextBoxFor(m => m.BodyFatWeight, new { @class = "form-control", @readonly = "readonly" })</td>
+                    <td>@Html.EditorFor(m => m.BFI, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.USNavyBFI)</td>
+                    <td>@Html.EditorFor(m => m.LeanBodyMassUSNavy, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                    <td>@Html.EditorFor(m => m.BodyFatWeightUSNavy, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                    <td>@Html.EditorFor(m => m.USNavyBFI, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                </tr>
+                <tr>
+                    <td>Average</td>
+                    <td>@Html.EditorFor(m => m.LeanBodyMassAverage, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                    <td>@Html.EditorFor(m => m.BodyFatWeightAverage, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                    <td>@Html.EditorFor(m => m.BFIAverage, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
+
+@section scripts {
+    <script type="text/javascript">
+        function setLabels() {
+            var ddVal = $('#UOFM').val();
+            if (ddVal == 1) { // Imperial
+                $('.heightUOFM').each(function (i, e) {
+                    $(this).text('inches');
+                });
+
+                $('.massUOFM').each(function (i, e) {
+                    $(this).text('pounds');
+                });
+            }
+            else if (ddVal == 2) { // Metric
+                $('.heightUOFM').each(function (i, e) {
+                    $(this).text('cm');
+                });
+
+                $('.massUOFM').each(function (i, e) {
+                    $(this).text('kilograms');
+                });
+            }
+            else {
+                $('.heightUOFM').each(function (i, e) {
+                    $(this).text("");
+                });
+
+                $('.massUOFM').each(function (i, e) {
+                    $(this).text("");
+                });
+            }
+        }
+
+        $(document).ready(function () {
+
+            $('[title]').tooltip();
+
+            setLabels();
+
+            $('#UOFM').change(function () {
+                setLabels();
+            });
+        });
+    </script>
+}

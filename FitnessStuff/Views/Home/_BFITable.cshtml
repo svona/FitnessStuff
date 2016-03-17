@@ -1,0 +1,70 @@
+﻿@model System.Type
+<h3 id="wiki_body_fat_percentage">Body Fat Percentage a.k.a. Body Fat Index (BFI)</h3>
+<p><a href="https://en.wikipedia.org/wiki/Body_fat_percentage" rel="nofollow">Body Fat Percentage</a> (BF% or BFI) is also very common to track. BF% is the total mass of fat divided by total body mass; body fat includes essential body fat and storage body fat.  The percentage of essential body fat for women is greater than that for men, due to the demands of childbearing and other hormonal functions. A number of methods are available for determining body fat percentage, such as measurement with calipers or through the use of bioelectrical impedance analysis. The accuracy of these methods and devices vary, but comparing previous measurements with later measurements is often useful and motivating.</p>
+<p style="font-weight:bold">
+    General Body Fat Percentage Categories
+</p>
+<table class="table">
+    @if (Model == typeof(FitnessStuff.Models.MaleModel))
+    {
+        <thead>
+            <tr>
+                <th style="text-align:center;">Category</th>
+                <th style="text-align:center;">Men BF%</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td align="center">Essential Fat</td>
+                <td align="center">2-5 %</td>
+            </tr>
+            <tr>
+                <td align="center">Athletes</td>
+                <td align="center">6-13 %</td>
+            </tr>
+            <tr>
+                <td align="center">Fitness</td>
+                <td align="center">14-17 %</td>
+            </tr>
+            <tr>
+                <td align="center">Acceptable</td>
+                <td align="center">18-24 %</td>
+            </tr>
+            <tr>
+                <td align="center">Obese</td>
+                <td align="center">25% +</td>
+            </tr>
+        </tbody>
+    }
+    else if (Model == typeof(FitnessStuff.Models.FemaleModel))
+    {
+        <thead>
+            <tr>
+                <th align="center">Category</th>
+                <th align="center">Women BF%</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td align="center">Essential Fat</td>
+                <td align="center">10-13 %</td>
+            </tr>
+            <tr>
+                <td align="center">Athletes</td>
+                <td align="center">14-20 %</td>
+            </tr>
+            <tr>
+                <td align="center">Fitness</td>
+                <td align="center">21-24 %</td>
+            </tr>
+            <tr>
+                <td align="center">Acceptable</td>
+                <td align="center">25-31 %</td>
+            </tr>
+            <tr>
+                <td align="center">Obese</td>
+                <td align="center">32% +</td>
+            </tr>
+        </tbody>
+    }
+</table>

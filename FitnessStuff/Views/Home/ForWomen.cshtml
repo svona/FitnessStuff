@@ -1,0 +1,92 @@
+﻿@model FitnessStuff.Models.FemaleModel
+@{
+    ViewBag.Title = "For Women";
+}
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@using (Html.BeginForm("ForWomen", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="row">
+        <div class="col-md-12">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.UOFM, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(m => m.UOFM, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.UOFM, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Height, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Height, new { @class = "form-control", @type = "number" })
+                    @Html.ValidationMessageFor(m => m.Height, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Weight, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Weight, new { @class = "form-control", @type = "number" })
+                    @Html.ValidationMessageFor(m => m.Weight, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.AgeInYears, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.AgeInYears, new { @class = "form-control", @type = "number" })
+                    @Html.ValidationMessageFor(m => m.AgeInYears, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <input type="submit" value="Calculate" class="btn btn-default" />
+        </div>
+        <div class="row">
+            <hr />
+            <div style="color:purple">
+                <span style="font-weight:bold">Basal Metabolic Rate (BMR)</span> the number of calories you'd burn if you stayed in bed all day.
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.BMR, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10" style="padding-top:10px;">
+                    @Html.DisplayFor(m => m.BMR) calories per day
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.OriginalHarrisBenedictBMR, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10" style="padding-top:20px;">
+                    @Html.DisplayFor(m => m.OriginalHarrisBenedictBMR) calories per day
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.RevisedHarrisBenedictBMR, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10" style="padding-top:20px;">
+                    @Html.DisplayFor(m => m.RevisedHarrisBenedictBMR) calories per day
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.MifflinStJeorBMR, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10" style="padding-top:7px;">
+                    @Html.DisplayFor(m => m.MifflinStJeorBMR) calories per day
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div style="color:purple">
+            <span style="font-weight:bold">Body Mass Index (BMI)</span> measurement of body fat based on height and weight.
+        </div>
+        <div style="clear:left;width:50%">
+            @Html.Partial("_BMITable")
+        </div>
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.BMI, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10" style="padding-top:10px;">
+                    @Html.DisplayFor(m => m.BMI)
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
