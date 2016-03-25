@@ -168,6 +168,44 @@ namespace FitnessStuff.Models
         }
         #endregion
 
+        #region Heart Rate
+        [Display(Name = "Max Heart Rate (BPM)")]
+        public int MaxHeartRatesBPM
+        {
+            get
+            {
+                return 220 - this.AgeInYears;
+            }
+        }
+
+        [Display(Name = "Low Heart Rate (BPM)")]
+        public decimal LowHeartRateBPM
+        {
+            get
+            {
+                return this.MaxHeartRatesBPM * 0.5M;
+            }
+        }
+
+        [Display(Name = "Mid Heart Rate (BPM)")]
+        public decimal MidHeartRateBPM
+        {
+            get
+            {
+                return this.MaxHeartRatesBPM * 0.7M;
+            }
+        }
+
+        [Display(Name = "Max Heart Rate (BPM)")]
+        public decimal HighHeartRateBPM
+        {
+            get
+            {
+                return this.MaxHeartRatesBPM * 0.85M;
+            }
+        }
+        #endregion
+
         #region Abtract Properties
         [Display(Name = "Original Harris-Benedict BMR")]
         [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = true)]

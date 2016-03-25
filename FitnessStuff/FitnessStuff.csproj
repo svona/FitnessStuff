@@ -171,6 +171,7 @@
     <Content Include="Views\Home\_BMITable.cshtml" />
     <Content Include="Views\Home\_BFITable.cshtml" />
     <Content Include="Views\Home\_BMRNotes.cshtml" />
+    <Content Include="Views\Home\_HeartRate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
