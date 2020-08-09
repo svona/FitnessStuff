@@ -196,7 +196,7 @@ namespace FitnessStuff.Models
             }
         }
 
-        [Display(Name = "Max Heart Rate (BPM)")]
+        [Display(Name = "High Heart Rate (BPM)")]
         public decimal HighHeartRateBPM
         {
             get
